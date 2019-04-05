@@ -887,7 +887,7 @@ module.exports = Element.extend({
 		});
 
 		// Draw all of the tick labels, tick marks, and grid lines at the correct places
-		helpers.each(itemsToDraw, function(itemToDraw) {
+		helpers.each(itemsToDraw, function(itemToDraw, index) {
 			var glWidth = itemToDraw.glWidth;
 			var glColor = itemToDraw.glColor;
 
@@ -924,7 +924,7 @@ module.exports = Element.extend({
 				context.translate(itemToDraw.labelX, itemToDraw.labelY);
 				context.rotate(itemToDraw.rotation);
 				context.font = tickFont.string;
-				context.fillStyle = tickFont.color;
+				context.fillStyle = helpers.valueAtIndexOrDefault(tickFont.color, index);
 				context.textBaseline = 'middle';
 				context.textAlign = itemToDraw.textAlign;
 
